@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Racing Game</title>
+<style>
+    body {
+        background-image: url('village.jpg'); /* Replace 'village.jpg' with your village photo path */
+        background-size: cover;
+        background-repeat: no-repeat;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+    #gameArea {
+        width: 400px;
+        height: 600px;
+        border: 1px solid black;
+        position: relative;
+        overflow: hidden;
+        margin: 50px auto;
+    }
+    #car {
+        width: 50px;
+        height: 100px;
+        background-color: red;
+        position: absolute;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    .arrow-button, .movement-button {
+        width: 50px;
+        height: 50px;
+        background-color: #ccc;
+        display: inline-block;
+        margin: 10px;
+        cursor: pointer;
+        text-align: center;
+        line-height: 50px;
+    }
+</style>
+</head>
+<body>
+
+<div id="gameArea">
+    <div id="car"></div>
+</div>
+
+<div id="controls">
+    <div class="arrow-button" onclick="moveLeft()">&larr;</div>
+    <div class="arrow-button" onclick="moveRight()">&rarr;</div>
+    <div class="movement-button" onclick="moveForward()">F</div>
+    <div class="movement-button" onclick="moveBackward()">B</div>
+</div>
+
+<script>
+    function moveLeft() {
+        let car = document.getElementById("car");
+        let position = parseFloat(getComputedStyle(car).left);
+        if(position > 10) {
+            car.style.left = (position - 10) + "px";
+        }
+    }
+
+    function moveRight() {
+        let car = document.getElementById("car");
+        let position = parseFloat(getComputedStyle(car).left);
+        if(position < 340) {
+            car.style.left = (position + 10) + "px";
+        }
+    }
+
+    function moveForward() {
+        let car = document.getElementById("car");
+        let position = parseFloat(getComputedStyle(car).bottom);
+        if(position < 500) {
+            car.style.bottom = (position + 10) + "px";
+        }
+    }
+
+    function moveBackward() {
+        let car = document.getElementById("car");
+        let position = parseFloat(getComputedStyle(car).bottom);
+        if(position > 10) {
+            car.style.bottom = (position - 10) + "px";
+        }
+    }
+</script>
+
+</body>
+</html>
